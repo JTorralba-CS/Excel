@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ALI": {
+      "commandName": "Project",
+      "commandLineArgs": "WPH2.txt"
+    }
+  }
+}
