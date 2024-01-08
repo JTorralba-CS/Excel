@@ -117,7 +117,7 @@ namespace ALI
         public static void Main(string[] args)
         {
             String Input = args[0];
-            String Output = "C:\\" + Input + ".xlsx";
+            String Output = Path.Combine(Environment.CurrentDirectory, Input + ".xlsx");
 
             Console.WriteLine("Output File = " + Output);
 

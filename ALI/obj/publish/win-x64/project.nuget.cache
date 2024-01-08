@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O/ugp83nYcRpiFNeYhR+gyIsdThz2kUEjNooxxGuBYeTuvJZGqhty8TY6bet7JGPXbazmhIYugqjT00sggfwHQ==",
+  "dgSpecHash": "pJot9KyTKCLbGSqwQNPs6mb3OFGoGkKr6ZSBtaJoCbfIPuEtX7AtBRK+wWlsqKsQRv/Gvf/8sMO4C3BiwzgCZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\JTorralba\\OneDrive - elpasoteller911.org\\Development\\C#\\Excel\\ALI\\ALI.csproj",
+  "projectFilePath": "C:\\Users\\JTorralba\\OneDrive - ElPasoTeller911.org\\Development\\C#\\Excel\\ALI\\ALI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JTorralba\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.0\\microsoft.net.illink.tasks.8.0.0.nupkg.sha512",
     "C:\\Users\\JTorralba\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.0\\microsoft.netcore.app.runtime.win-x64.8.0.0.nupkg.sha512",

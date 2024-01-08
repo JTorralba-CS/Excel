@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ALI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46d1901000f1f6af01aeac0129da3dacb45aea42")]
 [assembly: System.Reflection.AssemblyProductAttribute("ALI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ALI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
