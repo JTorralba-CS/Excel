@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "O/ugp83nYcRpiFNeYhR+gyIsdThz2kUEjNooxxGuBYeTuvJZGqhty8TY6bet7JGPXbazmhIYugqjT00sggfwHQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\JTorralba\\OneDrive - elpasoteller911.org\\Development\\C#\\Excel\\ALI\\ALI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\JTorralba\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.0\\microsoft.net.illink.tasks.8.0.0.nupkg.sha512",
+    "C:\\Users\\JTorralba\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.0\\microsoft.netcore.app.runtime.win-x64.8.0.0.nupkg.sha512",
+    "C:\\Users\\JTorralba\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.0\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.0.nupkg.sha512",
+    "C:\\Users\\JTorralba\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.0\\microsoft.aspnetcore.app.runtime.win-x64.8.0.0.nupkg.sha512",
+    "C:\\Users\\JTorralba\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\8.0.0\\microsoft.netcore.app.crossgen2.win-x64.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

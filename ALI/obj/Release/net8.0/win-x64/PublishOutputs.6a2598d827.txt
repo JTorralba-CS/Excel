@@ -1,0 +1,5 @@
+C:\Users\JTorralba\OneDrive - elpasoteller911.org\Development\C#\Excel\ALI\bin\Release\net8.0\publish\win-x64\ALI.pdb
+C:\Users\JTorralba\OneDrive - elpasoteller911.org\Development\C#\Excel\ALI\bin\Release\net8.0\publish\win-x64\RESD.txt
+C:\Users\JTorralba\OneDrive - elpasoteller911.org\Development\C#\Excel\ALI\bin\Release\net8.0\publish\win-x64\VOIP.txt
+C:\Users\JTorralba\OneDrive - elpasoteller911.org\Development\C#\Excel\ALI\bin\Release\net8.0\publish\win-x64\WPH2.txt
+C:\Users\JTorralba\OneDrive - elpasoteller911.org\Development\C#\Excel\ALI\bin\Release\net8.0\publish\win-x64\ALI.exe
