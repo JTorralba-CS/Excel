@@ -1,17 +1,19 @@
 ﻿using Microsoft.Office.Interop.Excel;
-using _excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+using MSExcel = Microsoft.Office.Interop.Excel;
 
 namespace ALI
 {
     class Excel
     {
-        _Application ExcelApp = new _excel.Application();
-        Workbook WB;
-        Worksheet WS;
+        _Application _MSExcel = new MSExcel.Application();
+
+        Workbook WB = null;
+        Worksheet WS = null;
                 
         public void CreateFile()
         {
-            this.WB = ExcelApp.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+            this.WB = _MSExcel.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
             this.WS = this.WB.Worksheets[1];
 
             WS.Cells.Style.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
@@ -20,13 +22,15 @@ namespace ALI
 
         public void CreateSheet(String Input)
         {
-            String Raw = File.ReadAllText(@Input);
+            String Raw = File.ReadAllText(Input);
+            
+            Worksheet Sheet = this.WS;
 
-            Worksheet Sheet1 = ExcelApp.Worksheets.Add(After: this.WS);
+            Sheet.Name = Input;
 
-            Sheet1.Rows.RowHeight = 25;
-            Sheet1.StandardWidth = 5;
-            Sheet1.Cells.Font.Size = 12;
+            Sheet.Rows.RowHeight = 30;
+            Sheet.StandardWidth = 5;
+            Sheet.Cells.Font.Size = 12;
 
             int R_Start = 2;
             int C_Start = 2;
@@ -34,63 +38,65 @@ namespace ALI
             int R = R_Start - 1;
             int C = C_Start;
 
-            for (int i = 0; i < 40; i++)
+            for (int I = 0; I < 50; I++)
             {
-                Sheet1.Cells[R, C].Font.Bold = true;
-                Sheet1.Cells[R, C] = (i + 1).ToString();
+                Sheet.Cells[R, C].Font.Bold = true;
+                Sheet.Cells[R, C] = (I + 1).ToString();
                 C += 1;
             }
 
             R = R_Start;
             C = C_Start - 1;
 
-            for (int i = 0; i <= 20; i++)
+            for (int I = 0; I <= 25; I++)
             {
-                Sheet1.Cells[R, C].Font.Bold = true;
-                Sheet1.Cells[R, C] = i.ToString();
+                Sheet.Cells[R, C].Font.Bold = true;
+                Sheet.Cells[R, C] = I.ToString();
                 R += 1;
             }
 
             R = R_Start;
             C = C_Start;
 
-            for (int i = 0; i < Raw.Length - 1; i++)
+            for (int I = 0; I < Raw.Length - 1; I++)
             {
-                String Current = Raw.Substring(i, 1);
-                String Next = Raw.Substring(i + 1, 1);
+                String Current = Raw.Substring(I, 1);
+                String Next = Raw.Substring(I + 1, 1);
 
-                String Output = "";
+                String Data = "";
 
-                Sheet1.Cells[R, C].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
-                Sheet1.Cells[R, C].Font.Bold = true;
+                Sheet.Cells[R, C].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
+                Sheet.Cells[R, C].Font.Bold = true;
 
                 switch (Current)
                 {
                     case "\r":
-                        Output = "CR";
+                        Data = "CR";
                         break;
 
                     case "\n":
-                        Output = "LN";
+                        Data = "LN";
                         break;
 
                     case "\u0002":
-                        Output = "STX";
+                        Data = "STX";
                         break;
 
                     case "\u0003":
-                        Output = "ETX";
+                        Data = "ETX";
                         break;
 
                     default:
-                        Output = Current;
-                        Sheet1.Cells[R, C].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Gray);
-                        Sheet1.Cells[R, C].Font.Bold = false;
+                        Data = Current;
+                        Sheet.Cells[R, C].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Gray);
+                        Sheet.Cells[R, C].Font.Bold = false;
                         break;
                 }
 
-                Console.WriteLine($"[{R},{C}] = {i} {Output} {Current}");
-                Sheet1.Cells[R, C] = Output;
+                //Console.WriteLine($"[{R},{C}] = {I} {Data}");
+                Console.WriteLine("{0,-7} {1,-11} {2,-7}", I, $"[{R},{C}]", Data);
+
+                Sheet.Cells[R, C] = Data;
 
                 if (Current == "\r" & Next != "\n")
                 {
@@ -109,23 +115,44 @@ namespace ALI
             }
         }
 
-        public void SaveAs(string filepath)
+        public void SaveAs(String Output)
         {
-            WB.SaveAs(filepath);
+
+            FileInfo F = new FileInfo(Output);
+            F.Delete();
+
+            try
+            {
+                WB.SaveAs(Output);
+                WB.Close(false);
+                _MSExcel.Quit();
+            }
+            catch (Exception E)
+            {
+            }
+            finally
+            {
+                Marshal.ReleaseComObject(WS);
+                Marshal.ReleaseComObject(WB);
+                Marshal.ReleaseComObject(_MSExcel);
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
         }
 
-        public static void Main(string[] args)
+        public static void Main(String[] Args)
         {
-            String Input = args[0];
-            String Output = Path.Combine(Environment.CurrentDirectory, Input + ".xlsx");
+            String Input = @Args[0];
+            String Output = @Path.Combine(Environment.CurrentDirectory, Input + ".xlsx");
 
             Console.WriteLine("Output File = " + Output);
+            Console.WriteLine();
 
-            Excel ExcelFile = new Excel();
-            ExcelFile.CreateFile();
-            ExcelFile.CreateSheet(Input);
-            ExcelFile.SaveAs(@Output);
-            ExcelFile.WB.Close();
+            Excel _Excel = new Excel();
+
+            _Excel.CreateFile();
+            _Excel.CreateSheet(Input);
+            _Excel.SaveAs(Output);
         }
     }
 }
